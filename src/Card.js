@@ -28,25 +28,28 @@ export default class Card extends React.Component {
     this.setState({
     	searchText: text.target.value
     })
+	}
+	handleClick=()=>{
     axios.get('http://localhost:8080/tweets/details/'+this.state.searchText)
       .then(res => {
         const media = res.data.data.twitter;
         // console.log(media);
         this.setState({ media });
       });
-	} 
+	}
+
 
   _renderSearchBox=()=>{
   	return(
   		<div>
-  		<form>
   		<br />
   		<label>
    			 HashTag : &nbsp; &nbsp;   			 
     	<input type="text" name="hastag"  onChange={this.onChangeText}/>
+    	 &nbsp; &nbsp; 
+    	<button onClick={this.handleClick}>Search</button>
     	<br /><br />
   		</label>
-		</form>
   		</div>
   		)
   }
