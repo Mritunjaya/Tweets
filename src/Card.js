@@ -12,7 +12,7 @@ export default class Card extends React.Component {
  	}
 }
   componentDidMount() {
-    axios.get('http://localhost:8080/tweets/details/INDvWI')
+    axios.get('http://ghci.us-east-2.elasticbeanstalk.com/tweets/details/GHCI')
       .then(res => {
         const media = res.data.data.twitter;
         // console.log(media);
@@ -30,7 +30,7 @@ export default class Card extends React.Component {
     })
 	}
 	handleClick=()=>{
-    axios.get('http://localhost:8080/tweets/details/'+this.state.searchText)
+    axios.get('http://ghci.us-east-2.elasticbeanstalk.com/tweets/details/'+this.state.searchText)
       .then(res => {
         const media = res.data.data.twitter;
         // console.log(media);
@@ -63,9 +63,9 @@ if(this.state.media.length>0){
         <table id="customers">
         <tbody>
          <tr>
-          <th style={   { width: 150}}>Screen Name</th>
-          <th style={   { width: 600}}>Text</th>
-          <th style={   { width: 350}}>Media</th>
+          <th style={   { width: '15%'}}>User</th>
+          <th style={   { width: '35%'}}>Tweet</th>
+          <th style={   { width: '50%'}}>Media</th>
          </tr>
          {
 
@@ -73,7 +73,7 @@ if(this.state.media.length>0){
          <tr>
           <td>{(val['screenName'])}</td>
           <td>{val['text']}</td>
-          <td>{(val['media'].length>0)?(<img src={val['media'][0]['mediaURL']} height='60' width='60'/>):(<img src={logo} alt="hello" height='60' width='60'/>)}</td>
+          <td>{(val['media'].length>0)?(<img src={val['media'][0]['mediaURL']} alt="N/A" height='50%' width='50%'/>):(<img src={logo} alt="hello" height='60' width='60'/>)}</td>
          </tr>
          )
          	  	)
