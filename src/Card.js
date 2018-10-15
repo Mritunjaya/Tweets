@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from './noimage.png'
+import anzlogo from './anz_logo.png'
 
 import axios from 'axios';
 
@@ -42,7 +43,7 @@ export default class Card extends React.Component {
   _renderSearchBox=()=>{
   	return(
   		<div>
-  		<br />
+      <img src={anzlogo} alt="hello" height='60' width='150' />
   		<label>
    			 HashTag : &nbsp; &nbsp;   			 
     	<input type="text" name="hastag"  onChange={this.onChangeText}/>
@@ -58,7 +59,7 @@ export default class Card extends React.Component {
   render() {
 if(this.state.media.length>0){
     return (
-      <div>
+      <div id="load_tweets">
          {this._renderSearchBox()}
         <table id="customers">
         <tbody>
@@ -71,7 +72,7 @@ if(this.state.media.length>0){
 
          	  	this.state.media.map( (val, key) => (
          <tr>
-          <td>{(val['screenName'])}</td>
+          <td>{(val['screenName'])}<br></br>{(val['createdDt'])}<br></br>{(val['city'])}<br></br>{(val['country'])}</td>
           <td>{val['text']}</td>
           <td>{(val['media'].length>0)?(<img src={val['media'][0]['mediaURL']} alt="N/A" height='50%' width='50%'/>):(<img src={logo} alt="hello" height='60' width='60'/>)}</td>
          </tr>
